@@ -54,7 +54,7 @@ function adjustScore (resultOfGame) {
 let pScore = document.querySelector('#pScore');
 let cScore = document.querySelector('#cScore');
 let result = document.querySelector('#result')
-let buttons = document.querySelectorAll('button');
+let buttons = document.querySelectorAll('img');
 
 playerScore = 0;
 computerScore = 0;

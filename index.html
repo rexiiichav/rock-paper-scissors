@@ -8,19 +8,39 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>Rock, Paper, Scissors!</h1>
-    <p>
-      Click the buttons below to select rock, paper, or scissors. First to 5
-      wins!
-    </p>
-    <p>Paper Beats Rock. Rock Beats Scissors. Scissors Beats Paper.</p>
-    <div></div>
-    <div id="result"></div>
-    <div id="pScore">Player Score: 0</div>
-    <div id="cScore">Computer Score: 0</div>
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
+    <div id="container">
+      <h1>Rock, Paper, Scissors!</h1>
+      <p>
+        Click the buttons below to select rock, paper, or scissors. First to 5
+        wins!
+      </p>
+      <p>Paper Beats Rock. Rock Beats Scissors. Scissors Beats Paper.</p>
+      <div></div>
+      <div id="result"></div>
+
+      <div id="scores">
+        <div id="pScore">Player Score: 0</div>
+        <div id="cScore">Computer Score: 0</div>
+      </div>
+
+      <div id="buttons">
+        <img
+          id="rock"
+          src="https://cdn-icons-png.flaticon.com/512/4211/4211513.png"
+          alt=""
+        />
+        <img
+          id="paper"
+          src="https://cdn-icons-png.flaticon.com/512/2377/2377960.png"
+          alt=""
+        />
+        <img
+          id="scissors"
+          src="https://cdn-icons-png.flaticon.com/512/2542/2542041.png"
+          alt=""
+        />
+      </div>
+    </div>
   </body>
   <script src="script.js"></script>
 </html>
