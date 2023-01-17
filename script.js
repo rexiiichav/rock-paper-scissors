@@ -9,26 +9,6 @@ function getComputerChoice () {
     
 }
 
-function getPlayerChoice () {
-    while (true) {
-        let choice = (prompt("Please select number for Rock, Paper, or Scissors")).toLowerCase();
-        switch (choice) {
-        case "rock": 
-            return 0;
-            break;
-        case "paper": 
-            return 1;
-            break;
-        case "scissors":
-            return 2;
-            break;
-        default:
-            alert("Invalid entry - try again - check your spelling");
-            break;
-    }
-    }
-}
-
 function playGame (playerSelection, computerSelection) {
     pS = parseInt(playerSelection);
     cS = parseInt(computerSelection);
@@ -55,31 +35,53 @@ function playGame (playerSelection, computerSelection) {
     }
 };
 
-function game () {
-    let pScore = 0;
-    let cScore = 0;
-    console.log("Best 3 Out of 5 Game - Go!");
-    while (true) {
-        let result = playGame(getPlayerChoice(),getComputerChoice());
-        if (result.includes("Win")) {
-            pScore ++;
-            console.log(`${result}`);
-            console.log(`Player: ${pScore}. Computer ${cScore}`);
-        } else if (result.includes("Lose")) {
-            cScore ++;
-            console.log(`${result}`);
-            console.log(`Player: ${pScore}. Computer ${cScore}`);
+function adjustScore (resultOfGame) {
+    if (resultOfGame.includes('Win')) {
+        pScore.textContent = `Player Score: ${++playerScore}`}
+    else if (resultOfGame.includes('Lose')) {
+        cScore.textContent = `Computer Score: ${++computerScore}`}
+    else if (resultOfGame === 'reset') {
+        playerScore = 0;
+        computerScore = 0;
+        pScore.textContent = `Player Score: ${playerScore}`
+        cScore.textContent = `Computer Score: ${computerScore}`}
+    
+};
+
+
+//Start Code
+
+let pScore = document.querySelector('#pScore');
+let cScore = document.querySelector('#cScore');
+let result = document.querySelector('#result')
+let buttons = document.querySelectorAll('button');
+
+playerScore = 0;
+computerScore = 0;
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        if (e.target.id === 'rock') {
+            let readOut = playGame(0, getComputerChoice());
+            result.textContent = readOut;
+            adjustScore(readOut);
+        } else if (e.target.id === 'paper') {
+            let readOut = playGame(1, getComputerChoice());
+            result.textContent = readOut;
+            adjustScore(readOut);
         } else {
-            console.log("Tie - Next Round.")
+            let readOut = playGame(2, getComputerChoice());
+            result.textContent = readOut;
+            adjustScore(readOut);
         }
-        if (pScore === 3) {
-            console.log("You Win!")
-            break;
-        } else if (cScore === 3) {
-            console.log("You Lose...")
-            break;
+        if (playerScore === 5) {
+            result.textContent = "YOU WIN! CONGRATULATIONS!"
+            adjustScore('reset');
+        } else if (computerScore === 5) {
+            result.textContent = "You Lose!";
+            adjustScore('reset');
         }
-        }
-}
+    })
+});
+
 
 
